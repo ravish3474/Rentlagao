@@ -249,7 +249,7 @@ $(document).on('click','.clicker',function(){
             
             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> -->
 
-            <form class="form-inline my-2 my-lg-0 text-center w-75 desk" action="<?=base_url()?>search-results" method="POST">
+            <form class="hd_frm__ form-inline my-2 my-lg-0 text-center w-75 desk" action="<?=base_url()?>search-results" method="POST">
                 <input class="form-control w-25 serHt pac_input" type="text" name="city_name" value="<?=$location?>" placeholder="Search">
                  <div class="row drops text-left" style="display:none">
                     <div class="col">
@@ -331,7 +331,7 @@ $(document).on('click','.check_login',function(){
               ?>
               <div class="col-md-3">
                 <span class="text-uppercase text-black"><b><?=$cat['category_name']?></b></span>
-                <ul class="nav flex-column">
+                <ul class="ljsi_ nav flex-column">
                   <?php
                   $cat_id=$cat['id'];
                   $newsl="SELECT * FROM sub_categories WHERE cat_id='$cat_id'";

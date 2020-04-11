@@ -2,6 +2,11 @@
     <footer>
         <div class="container">
             <div class="row py-4">
+                  <div class="col-md-4 foot_hd">
+                    <div class="p-3">
+                        <a href="<?=base_url()?>" class=""><img src="<?=base_url()?>assets/web/images/logo.png" class="img-fluid"></a>
+                    </div>
+                </div>
                 <div class="col-md-3 foot_hd">
                     <h6>POPULAR LOCATIONS</h6>
                     <ul class=" list-unstyled mt-4 m-0 __ftlst">

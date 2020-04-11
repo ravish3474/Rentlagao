@@ -2,6 +2,7 @@
  <style>
 
  </style>
+
     <section>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -34,9 +35,9 @@
         <div class="container mt-5 mb-5 __sft_">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <h4>More on <?php
+                    <h4 class="dksHt">More on <?php
                     $location=$this->session->userdata('location_user');
-                    $loc_sql="SELECT * FROM active_ads JOIN sub_categories ON sub_categories.sub_id=active_ads.sub_id WHERE active_ads.city='$location' ORDER BY rand() LIMIT 1";
+                    $loc_sql="SELECT * FROM active_ads JOIN sub_categories ON sub_categories.sub_id=active_ads.sub_id WHERE active_ads.city='$location' ORDER BY rand() ";
                     $query = $this->db->query($loc_sql);
                     $result = $query->result_array();
                     echo $result[0]['sub_name'];
@@ -59,19 +60,19 @@
                 ?>
                 <div class="inner px-2"> <div class="pr_shw">
                             <div class="">
-                                <div class="">
+                                <div class="ab_fi">
                                     <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
                                     <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$advert['ads_id']?>"></i></span></div>
                                 </div>
                                 <a href="<?=base_url()?>classifieds/<?=$advert['ads_id']?>">
-                                <img src="<?=base_url()?>uploads/ads_images/<?=$imager?>" class="img-fluid" alt="">
+                                <img src="<?=base_url()?>uploads/ads_images/<?=$imager?>" class="saUbd" alt="">
                             </a>
                             </div>
                             <a href="<?=base_url()?>classifieds/<?=$advert['ads_id']?>">
                             <div class="product_val">
-                                <h5>&#8377; <?=$advert['price']?></h5>
+                                <h5 class="m-0">&#8377; <?=number_format($advert['price'])?></h5>
                                 <!-- <p>2013 - 45,000 Km</p> -->
-                                <span><?=$advert['product_name']?></span>
+                                <small ><?=$advert['product_name']?></small>
                                 <div class="_taddt">
                                     <span><?=$advert['city']?></span>
                                     <!-- <span class=""> JAN 27</span> -->
@@ -91,22 +92,22 @@
                 $explode=explode(",",$pics);
                 $img=$explode[0];
                 ?>
-                <div class="col-md-3 mt-4 px-2">
+                <div class="col-md-3 col-md-6 col-lg-3  mt-4 px-2">
                     <div class="pr_shw">
                             <div class="">
-                                <div class="">
+                                <div class="ab_filt">
                                     <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
                                     <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$advert['ads_id']?>"></i></span></div>
                                 </div>
                                 <a href="<?=base_url()?>classifieds/<?=$ad['ads_id']?>">
-                                <img src="<?=base_url()?>uploads/ads_images/<?=$img?>" class="img-fluid" alt="">
+                                <img src="<?=base_url()?>uploads/ads_images/<?=$img?>" class="prd_hw" alt="">
                                 </a>
                             </div>
                             <a href="<?=base_url()?>classifieds/<?=$ad['ads_id']?>">
                             <div class="product_val">
-                                <h5>&#8377; <?=$ad['price']?></h5>
+                                <h5 class="m-0">&#8377; <?=number_format($ad['price'])?></h5>
                                 <!-- <p>2013 - 45,000 Km</p> -->
-                                <span><?=$ad['product_name']?></span>
+                                <small><?=$ad['product_name']?></small>
                                 <div class="_taddt">
                                     <span><?=$ad['city']?></span>
                                     <!-- <span class=""> JAN 27</span> -->

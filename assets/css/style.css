@@ -2,6 +2,8 @@ body
 {
     font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
 }
+
+
 .sidebar, .off-canvas-sidebar
     {
 	    position: fixed;

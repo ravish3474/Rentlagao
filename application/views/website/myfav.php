@@ -42,7 +42,7 @@
 		
 			<div  id="tabs" class="project-tab ">
 		 		<nav>
-                    <div class="nav nav-tabs nav-fill w-25" id="nav-tab" role="tablist">
+                    <div class="nav nav-tabs nav-fill w-50" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">ADS</a>
                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">FAVOURITES</a>
                        
@@ -56,22 +56,22 @@
                         $picture=explode(",",$adda['photos']);
                         $pic=$picture[0];
                         ?>
-                          <div class="col-md-4 mt-4 px-2">
+                          <div class="col-md-4 col-md-6 col-lg-3  mt-4 px-2">
                                 <div class="pr_shw">
                                         <div class="">
-                                            <div class="">
+                                            <div class="ab_filt">
                                                 <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
                                                 <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$adda['ads_id']?>"></i></span></div>
                                             </div>
                                             <a href="<?=base_url()?>classifieds/<?=$adda['ads_id']?>">
-                                            <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="img-fluid" alt="">
+                                            <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="prd_hw" alt="">
                                         </a>
                                         </div>
                                         <a href="<?=base_url()?>classifieds/<?=$adda['ads_id']?>">
                                         <div class="product_val">
-                                            <h5>&#8377; <?=$adda['price']?></h5>
+                                            <h5 class="m-0">&#8377; <?=number_format($adda['price'])?></h5>
                                             <!-- <p>2013 - 45,000 Km</p> -->
-                                            <span><?=$adda['product_name']?></span>
+                                            <small><?=$adda['product_name']?></small>
                                             <div class="_taddt">
                                                 <span><?=$adda['city']?></span>
                                                 <!-- <span class=""> JAN 27</span> -->
@@ -90,22 +90,22 @@
                         $picture=explode(",",$favs['photos']);
                         $pic=$picture[0];
                         ?>
-                          <div class="col-md-4 mt-4 px-2">
+                          <div class="col-md-4 col-md-6 col-lg-3  mt-4 px-2">
                                 <div class="pr_shw">
                                         <div class="">
-                                            <div class="">
+                                            <div class="ab_filt">
                                                 <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
                                                 <div class="float-right"><span><i class="fa fa-trash delet_fav" adv_id="<?=$favs['ads_id']?>"></i></span></div>
                                             </div>
                                             <a href="<?=base_url()?>classifieds/<?=$favs['ads_id']?>">
-                                            <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="img-fluid" alt="">
+                                            <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="prd_hw" alt="">
                                         </a>
                                         </div>
                                         <a href="<?=base_url()?>classifieds/<?=$favs['ads_id']?>">
                                         <div class="product_val">
-                                            <h5>&#8377; <?=$favs['price']?></h5>
+                                            <h5 class="m-0">&#8377; <?=number_format($favs['price'])?></h5>
                                             <!-- <p>2013 - 45,000 Km</p> -->
-                                            <span><?=$favs['product_name']?></span>
+                                            <small><?=$favs['product_name']?></small>
                                             <div class="_taddt">
                                                 <span><?=$favs['city']?></span>
                                                 <!-- <span class=""> JAN 27</span> -->

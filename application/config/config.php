@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://192.168.29.234/olx/';
-$config['base_url'] = 'http://localhost/olx/';
+$config['base_url'] = 'http://localhost/Rentlagao/';
 
 /*
 |--------------------------------------------------------------------------

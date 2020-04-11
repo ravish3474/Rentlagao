@@ -7,7 +7,7 @@
 .mobile{
 	display: none;
 
-    justify-content: center;
+    /*justify-content: center;*/
 }
 .desk{
 	display: block;
@@ -24,6 +24,23 @@
 	color:blue !important;
 
 }
+.srch_icn{
+	    position: absolute;
+   
+    top: 12px;
+    color: #898a8b;
+}
+.srch_icn_des {
+    position: absolute;
+    color: #898a8b;
+    left: 10px;
+}
+.srch_csa__{
+	    position: absolute;
+    /* top: 12px; */
+    color: #898a8b;
+    left: 25%;
+}
 .tab_ls{
 	display: block;
 }
@@ -33,6 +50,15 @@
 }
 .dksHt{
 	font-size: 1.5rem;
+}
+.font-14{
+	font-size: 14px;
+}
+.dropper{
+	line-height: 1;
+}
+.mobile .HTx_serc{
+	width:75% !important;   
 }
 @media only screen and (max-width: 994px){
 	.mobile{
@@ -46,7 +72,7 @@
 	
 	.my-sm-0{
 		height: 45px;
-		margin-left: 5px
+		margin-left: -12px
 	}
 	.tab_ls{
 		display: none;
@@ -58,6 +84,15 @@
 	.dksHt{
 	font-size: 1.25rem;
 }
+.mobile .HTx_serc {
+    width: 70% !important;
+}
+}
+
+@media only screen and (max-width: 448px){
+	.mobile .HTx_serc {
+	    width: 69% !important;
+	}
 }
 .w-40{
 	width:40% !important;
@@ -71,9 +106,7 @@
 .HTx_serc{
 	    width: 64% !important;   
 }
-.mobile .HTx_serc{
-	width: 55% !important;   
-}
+
 .ab_fi{
 	    position: absolute;
     width: 46%;

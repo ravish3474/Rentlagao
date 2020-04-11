@@ -186,12 +186,12 @@ font-family: Roboto,Arial,Helvetica,sans-serif !important;
       url:'<?=base_url()?>WebController/fetch_cities',
       success:function(response){
         var response = JSON.parse(response);
-        $('.dropper').empty();
+       
         var html='';
-        html+='<li class="mt-2">POPULAR LOCATIONS</li><hr>';
+        html+='<li class="my-2 border-bottom"><small><strong>POPULAR LOCATIONS</strong></small></li>';
         for(var i=0;i<response.length;i++){
-             
-          html+='<li><i class="fa fa-map-marker mr-2" aria-hidden="true"></i><a href="<?=base_url()?>WebController/set_location/'+response[i].city+'">'+response[i].city+'</li>';
+              $('.dropper').empty();
+          html+='<li ><i class="font-14 fa fa-map-marker mr-2" aria-hidden="true"></i><a class="font-14" href="<?=base_url()?>WebController/set_location/'+response[i].city+'">'+response[i].city+'</li>';
             $('.dropper').append(html);
         }
         $('.dropper').show();
@@ -250,7 +250,8 @@ $(document).on('click','.clicker',function(){
             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> -->
 
             <form class="hd_frm__ form-inline my-2 my-lg-0 text-center w-75 desk" action="<?=base_url()?>search-results" method="POST">
-                <input class="form-control w-25 serHt pac_input" type="text" name="city_name" value="<?=$location?>" placeholder="Search">
+              <span class="srch_icn ml-2"><i class="fas fa-search"></i></span>
+                <input class="form-control pl-4 w-25 serHt pac_input" type="text" name="city_name" value="<?=$location?>" placeholder="Search">
                  <div class="row drops text-left" style="display:none">
                     <div class="col">
                         <ul class="dropper p-0" >
@@ -258,7 +259,8 @@ $(document).on('click','.clicker',function(){
                         </ul>
                     </div>
                   </div>
-                <input class="ml-2 form-control mr-sm-2 HTx_serc serHt searcher" type="text" name="search_name" placeholder="Search"> 
+                   <span class="srch_icn"><i class="fas fa-search"></i></span>
+                <input class="pl-4 ml-n2 form-control mr-sm-2 HTx_serc serHt searcher" type="text" name="search_name" placeholder="Search"> 
                   <div class="row dropss text-left">
                   <div class="col p-0">
                       <ul class=" list-group droppers" style="display: none">
@@ -366,16 +368,19 @@ $(document).on('click','.check_login',function(){
 
 </nav>
         <div >
-         <form class="form-inline my-2 my-lg-0 w-100 mobile" action="<?=base_url()?>search-results" method="POST">
-                 <input class="form-control w-25 serHt pac_input" type="text" name="city_name" value="<?=$location?>" placeholder="Search"> 
-                    <div class="row drops text-left" style="display:none">
+         <form class="form-inline my-2 px-1 my-lg-0 w-100 mobile" action="<?=base_url()?>search-results" method="POST">
+            
+                 <input class="form-control pl-4 w-25 serHt pac_input" type="text" name="city_name" value="<?=$location?>" placeholder="Search"> 
+                 <span class="srch_icn_des"><i class="fas fa-search"></i></span>
+                  <div class="row drops text-left" style="display:none">
                     <div class="col">
                         <ul class="dropper p-0" >
                           
                         </ul>
                     </div>
                   </div>
-                <input class="ml-2 form-control mr-sm-2 HTx_serc serHt searcher"  type="text" name="search_name" type="text" placeholder="Search"> 
+                  <span class="srch_csa__"><i class="fas fa-search"></i></span>
+                <input class="ml-n2 pl-4 form-control mr-sm-2 HTx_serc serHt searcher"  type="text" name="search_name" type="text" placeholder="Search"> 
                   <div class="row dropss text-left">
                   <div class="col p-0">
                       <ul class=" list-group droppers" style="display: none">

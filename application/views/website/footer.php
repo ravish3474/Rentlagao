@@ -5,22 +5,30 @@
                 <div class="col-md-3 foot_hd">
                     <h6>POPULAR LOCATIONS</h6>
                     <ul class=" list-unstyled mt-4 m-0 __ftlst">
-                        <li><a href="">Kolkata</a></li>
-                        <li><a href="">Chennai</a></li>
-                        <li><a href="">Mumbai</a></li>
-                        <li><a href="">Delhi</a></li>
+                        <?php
+                        $sql="SELECT DISTINCT city from active_ads ORDER BY rand() LIMIT 4";
+                        $query = $this->db->query($sql);
+                        $result = $query->result_array();
+                        foreach ($result as $rs) {
+                        ?>
+                        <li><a href="<?=base_url()?>WebController/set_location/<?=$rs['city']?>"><?=$rs['city']?></a></li>
+                    <?php } ?>
                     </ul>
                 </div>
                 <div class="col-md-3 foot_hd">
                     <h6>TRENDING LOCATIONS</h6>
                     <ul class=" list-unstyled mt-4 m-0 __ftlst">
-                        <li><a href="">Bhuvneshwar</a></li>
-                        <li><a href="">Hydrabad</a></li>
-                        <li><a href="">Chandigarh</a></li>
-                        <li><a href="">Nashik</a></li>
+                        <?php
+                        $sql="SELECT DISTINCT city from active_ads ORDER BY rand() LIMIT 4";
+                        $query = $this->db->query($sql);
+                        $result = $query->result_array();
+                        foreach ($result as $rs) {
+                        ?>
+                        <li><a href="<?=base_url()?>WebController/set_location/<?=$rs['city']?>"><?=$rs['city']?></a></li>
+                    <?php } ?>
                     </ul>
                 </div>
-                <div class="col-md-2 foot_hd">
+<!--                 <div class="col-md-2 foot_hd">
                     <h6>ABOUT US</h6>
                     <ul class=" list-unstyled mt-4 m-0 __ftlst">
                         <li><a href="">About OLX Group</a></li>
@@ -28,8 +36,8 @@
                         <li><a href="">Contact Us</a></li>
                         <li><a href="">OLX People</a></li>
                     </ul>
-                </div>
-                <div class="col-md-2 foot_hd">
+                </div> -->
+<!--                 <div class="col-md-2 foot_hd">
                     <h6>OLX</h6>
                     <ul class=" list-unstyled mt-4 m-0 __ftlst">
                         <li><a href="">Help</a></li>
@@ -37,7 +45,7 @@
                         <li><a href="">Legal & Privacy Information</a></li>
                         <li><a href="">Delhi</a></li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="col-md-2 foot_hd">
                     <h6>FOLLOW US</h6>
                     <ul class="d-flex list-unstyled mt-4 m-0 __ftl">
@@ -53,7 +61,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        Other Countries Pakistan - South Africa - Indonesia
+                        Rentlagao.com
                     </div>
                     <div class="col-md-6 text-right">
                         <span>Free Classified in India</span>

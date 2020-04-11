@@ -201,8 +201,8 @@ if($this->session->userdata('userdata')){
 				<div class="pv_taddt">
 					<h2 class="m-0">₹ <?=$ad[0]['price']?></h2>
 					<span>
-						<span>Share</span>
-						<span><i class="far fa-heart"></i></span>
+						<span>Add To Favourites</span>
+						<span><i class="far fa-heart favourite" adv_id="<?=$ad[0]['ads_id']?>"></i></span>
 					</span>
 				</div>
 				<!-- <p>2013 - 45,000 Km</p> -->

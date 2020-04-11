@@ -61,7 +61,7 @@
                             <div class="">
                                 <div class="">
                                     <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
-                                    <div class="float-right"><span><i class="far fa-heart"></i></span></div>
+                                    <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$advert['ads_id']?>"></i></span></div>
                                 </div>
                                 <a href="<?=base_url()?>classifieds/<?=$advert['ads_id']?>">
                                 <img src="<?=base_url()?>uploads/ads_images/<?=$imager?>" class="img-fluid" alt="">
@@ -96,7 +96,7 @@
                             <div class="">
                                 <div class="">
                                     <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
-                                    <div class="float-right"><span><i class="far fa-heart"></i></span></div>
+                                    <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$advert['ads_id']?>"></i></span></div>
                                 </div>
                                 <a href="<?=base_url()?>classifieds/<?=$ad['ads_id']?>">
                                 <img src="<?=base_url()?>uploads/ads_images/<?=$img?>" class="img-fluid" alt="">

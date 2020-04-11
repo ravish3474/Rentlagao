@@ -57,6 +57,7 @@ $route['create-ad/(:any)'] = 'WebController/create_post/$1';
 $route['view-ads/(:any)'] = 'WebController/fetch_by_category/$1';
 $route['view-ads/(:any)/(:any)'] = 'WebController/fetch_by_subcat/$1/$2';
 $route['my-advertisements'] = 'WebController/my_ads';
+$route['search-results'] = 'WebController/search_results';
 $route['chat'] = 'WebController/chat';
 $route['open-chat/(:any)'] = 'WebController/open_chat/$1';
 $route['my-profile'] = 'WebController/edit_profile';

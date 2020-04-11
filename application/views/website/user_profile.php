@@ -73,7 +73,7 @@
                             <div class="">
                                 <div class="">
                                     <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
-                                    <div class="float-right"><span><i class="far fa-heart"></i></span></div>
+                                    <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$prod['ads_id']?>"></i></span></div>
                                 </div>
                                 <a href="<?=base_url()?>classifieds/<?=$prod['ads_id']?>">
                                     <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="img-fluid" alt="">

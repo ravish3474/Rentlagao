@@ -46,7 +46,7 @@ position: absolute;
     background: white;
     /* border: 1px solid red; */
     top: 46px;
-    left: 147px;
+    left:   170px;
     margin-left: 0px;
     z-index: 122;
     width: 248px;  height: auto;
@@ -63,7 +63,7 @@ position: absolute;
     background: white;
     /* border: 1px solid red; */
     top: 46px;
-   left: 413px;
+   left: 439PX;
     margin-left: 0px;
     z-index: 122;
     width: 631px;  height: auto;
@@ -75,7 +75,45 @@ position: absolute;
     list-style: none;
     padding:5px 0px ;
   }
+@media only screen and (max-width: 600px) {
+   .drops{
+    position: absolute;
+    background: white;
+    /* border: 1px solid red; */
+    top: 182px;
+    left: 15px;
+    margin-left: 0px;
+    z-index: 122;
+    width: 150px;
+    height: auto;
+    /* min-height: 100px; */
+    max-height: 220px;
+    overflow-y: scroll;
+} 
+  .dropper li{
+    list-style: none;
+    padding:5px 0px ;
+  }
+   .dropss{
+position: absolute !important;
+    background: white;
+    /* border: 1px solid red; */
+    top: 180px !important;
+   left: 130PX !important;
+    margin-left: 0px !important;
+    z-index: 122 !important;
+    width: 220px !important; 
+     height: auto;
+  /* min-height: 100px; */
+  max-height: 220px;
+  overflow-y: scroll;
+} 
+  .droppers li{
+    list-style: none;
+    padding:5px 0px ;
+  }
 
+  }
 /* breakpoint and up - mega dropdown styles */
 @media screen and (min-width: 992px) {
   
@@ -133,7 +171,7 @@ font-family: Roboto,Arial,Helvetica,sans-serif !important;
 
 <body>
 <script type="text/javascript">
-  $(document).on('keyup','#pac_input',function(){
+  $(document).on('keyup','.pac_input',function(){
     var name = $(this).val();
     if(name.length==0){
       $('.dropper').hide();
@@ -165,9 +203,9 @@ font-family: Roboto,Arial,Helvetica,sans-serif !important;
   }
   })
 
-  $(document).on('keyup','#searcher',function(){
+  $(document).on('keyup','.searcher',function(){
     var name=$(this).val();
-    var location = $('#pac_input').val();
+    var location = $('.pac_input').val();
     if(name.length==0){
       $('.droppers').hide();
     }
@@ -201,17 +239,18 @@ font-family: Roboto,Arial,Helvetica,sans-serif !important;
 
 $(document).on('click','.clicker',function(){
   var name = $(this).html();
-  $('#searcher').val(name);
+  $('.searcher').val(name);
   $('.droppers').hide();
 })
 </script> 
     <header class="bg-light">
-        <nav class="container navbar navbar-expand-lg navbar-light "> <a class="navbar-brand" href="<?=base_url()?>" data-abc="true">RentLagao</a> 
+        <nav class="container navbar navbar-expand-lg navbar-light "> 
+          <a class="navbar-brand m-0" href="<?=base_url()?>" data-abc="true"><img class="img img-fluid" src="<?=base_url()?>assets/web/images/logo.png" style=" height: 38px !important;"></a> 
             
             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> -->
 
-            <form class="form-inline my-2 my-lg-0 text-center w-75 desk">
-                <input class="form-control w-25 serHt" type="text" id="pac_input" value="<?=$location?>" placeholder="Search">
+            <form class="form-inline my-2 my-lg-0 text-center w-75 desk" action="<?=base_url()?>search-results" method="POST">
+                <input class="form-control w-25 serHt pac_input" type="text" name="city_name" value="<?=$location?>" placeholder="Search">
                  <div class="row drops text-left" style="display:none">
                     <div class="col">
                         <ul class="dropper p-0" >
@@ -219,7 +258,7 @@ $(document).on('click','.clicker',function(){
                         </ul>
                     </div>
                   </div>
-                <input class="ml-2 form-control mr-sm-2 HTx_serc serHt" id="searcher" type="text" placeholder="Search"> 
+                <input class="ml-2 form-control mr-sm-2 HTx_serc serHt searcher" type="text" name="search_name" placeholder="Search"> 
                   <div class="row dropss text-left">
                   <div class="col p-0">
                       <ul class=" list-group droppers" style="display: none">
@@ -239,6 +278,7 @@ $(document).on('click','.clicker',function(){
                           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">'.$userdata[0]['nickname'].'</a>
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="'.base_url().'my-advertisements">My Ads</a>
+                              <a class="dropdown-item" href="'.base_url().'chat">Chats</a>
                               <a class="dropdown-item" href="'.base_url().'my-profile">My Profile</a>
                               <a class="dropdown-item" href="'.base_url().'change-password">Settings</a>
                               <a class="dropdown-item" href="'.base_url().'WebController/logout">Logout</a>
@@ -326,9 +366,23 @@ $(document).on('click','.check_login',function(){
 
 </nav>
         <div >
-         <form class="form-inline my-2 my-lg-0 w-100 mobile">
-                 <input class="form-control w-25 serHt" type="text" placeholder="Search"> 
-                <input class="ml-2 form-control mr-sm-2 HTx_serc serHt" type="text" placeholder="Search"> 
+         <form class="form-inline my-2 my-lg-0 w-100 mobile" action="<?=base_url()?>search-results" method="POST">
+                 <input class="form-control w-25 serHt pac_input" type="text" name="city_name" value="<?=$location?>" placeholder="Search"> 
+                    <div class="row drops text-left" style="display:none">
+                    <div class="col">
+                        <ul class="dropper p-0" >
+                          
+                        </ul>
+                    </div>
+                  </div>
+                <input class="ml-2 form-control mr-sm-2 HTx_serc serHt searcher"  type="text" name="search_name" type="text" placeholder="Search"> 
+                  <div class="row dropss text-left">
+                  <div class="col p-0">
+                      <ul class=" list-group droppers" style="display: none">
+
+                      </ul>
+                  </div>
+                </div>
                 <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button> 
             </form>
         </div>
@@ -503,4 +557,32 @@ $(window).resize(function(){
 
 // document ready  
 });
+</script>
+
+<script>
+  $(document).on('click','.favourite',function(){
+    var adv_id=$(this).attr('adv_id');
+    var sess = <?=$sess?>;
+    if (sess==0) {
+      $('#exampleModal').modal('show');
+    }
+    else{
+      $.ajax({
+        type:'POST',
+        data:{
+          adv_id:adv_id,
+        },
+        url:'<?=base_url()?>WebController/add_fav',
+        success:function(response){
+          var response=JSON.parse(response);
+          if (response.status=="1") {
+            swal('Success','Added To Your favourites','success');
+          }
+          else{
+            swal('Exists','Already Exists In your favourites','warning');
+          }
+        }
+      })
+    }
+  })
 </script>

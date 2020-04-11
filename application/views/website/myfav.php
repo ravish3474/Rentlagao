@@ -61,7 +61,7 @@
                                         <div class="">
                                             <div class="">
                                                 <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
-                                                <div class="float-right"><span><i class="far fa-heart"></i></span></div>
+                                                <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$adda['ads_id']?>"></i></span></div>
                                             </div>
                                             <a href="<?=base_url()?>classifieds/<?=$adda['ads_id']?>">
                                             <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="img-fluid" alt="">
@@ -85,53 +85,64 @@
                     </div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                        <div class="d-flex">
+                        <?php
+                        foreach ($myfavs as $favs) {
+                        $picture=explode(",",$favs['photos']);
+                        $pic=$picture[0];
+                        ?>
                           <div class="col-md-4 mt-4 px-2">
                                 <div class="pr_shw">
                                         <div class="">
                                             <div class="">
                                                 <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
-                                                <div class="float-right"><span><i class="far fa-heart"></i></span></div>
+                                                <div class="float-right"><span><i class="fa fa-trash delet_fav" adv_id="<?=$favs['ads_id']?>"></i></span></div>
                                             </div>
-                                            <img src="assets/img/12.jpg" class="img-fluid" alt="">
+                                            <a href="<?=base_url()?>classifieds/<?=$favs['ads_id']?>">
+                                            <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="img-fluid" alt="">
+                                        </a>
                                         </div>
+                                        <a href="<?=base_url()?>classifieds/<?=$favs['ads_id']?>">
                                         <div class="product_val">
-                                            <h5>&#8377; 5000</h5>
-                                            <p>2013 - 45,000 Km</p>
-                                            <span>Skoda Rapid 1.2L</span>
+                                            <h5>&#8377; <?=$favs['price']?></h5>
+                                            <!-- <p>2013 - 45,000 Km</p> -->
+                                            <span><?=$favs['product_name']?></span>
                                             <div class="_taddt">
-                                                <span>Saheed Nagar</span>
-                                                <span class=""> JAN 27</span>
-                                            </div>
-                                        </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-4 mt-4 px-2">
-                                <div class="pr_shw">
-                                    <a href="">
-                                        <div class="">
-                                            <div class="">
-                                                <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
-                                                <div class="float-right"><span><i class="far fa-heart"></i></span></div>
-                                            </div>
-                                            <img src="assets/img/12.jpg" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="product_val">
-                                            <h5>&#8377; 5000</h5>
-                                            <p>2013 - 45,000 Km</p>
-                                            <span>Skoda Rapid 1.2L</span>
-                                            <div class="_taddt">
-                                                <span>Saheed Nagar</span>
-                                                <span class=""> JAN 27</span>
+                                                <span><?=$favs['city']?></span>
+                                                <!-- <span class=""> JAN 27</span> -->
                                             </div>
                                         </div>
                                     </a>
                                 </div>
 
                             </div>
+                        <?php } ?>
                         </div>
                     </div>
                    
                 </div>
 			</div>
 </section>
+<script type="text/javascript">
+$(document).on('click','.delet_fav',function(){
+    var adv_id = $(this).attr('adv_id');
+    if(confirm('Do you really want to remove this ad from your favourites?')){
+        $.ajax({
+            type:'POST',
+            data:{
+                adv_id:adv_id
+            },
+            url:'<?=base_url()?>WebController/delete_fav',
+            success:function(response){
+                var response = JSON.parse(response);
+                if (response.status==1) {
+                    swal('Success','Removed Successfully From favourites','success');
+                    location.reload();
+                }
+                else{
+                    swal('OOPS','OOPS SOMETHING WENT WRONG','error');
+                }
+            }
+        })
+    }
+})    
+</script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2020 at 08:27 PM
+-- Generation Time: Apr 11, 2020 at 12:30 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -52,7 +52,9 @@ CREATE TABLE `active_ads` (
 --
 
 INSERT INTO `active_ads` (`ads_id`, `user_id`, `sub_id`, `product_name`, `basic_desc`, `description`, `price`, `photos`, `country`, `state`, `city`, `name`, `mobile`, `mobile_active`, `status_active`, `post_time`) VALUES
-(1, '1', '1', 'SADSA', 'ASDASD', '<p>sadsadasd</p>\r\n', '111', '1586454794_ALSIG.JPG,1586454794_ALSIG12.JPG,1586454794_etyze.jpg', 'India', 'Pondicherry', 'Ariankuppam', 'MIRZA RAVISH BEG', '09582090912', 0, 1, '2020-04-09 22:35:35');
+(10, '3', '2', '3 BHK VILLA', '3 BHK VILLA', '<p>3 BHK VILLA</p>\r\n', '5000000', '1586556479_download.jpg,1586556479_download2.jpg', 'India', 'Delhi', 'Delhi', 'MIRZA RAVISH BEG', '09582090912', 0, 1, '2020-04-10 22:07:59'),
+(11, '4', '5', 'Chevrolet AVEO UVA', '2000-4000 KM', '<p>CHEVROLET AVEO UVA</p>\r\n\r\n<p>CAR</p>\r\n', '100000', '1586557264_Chevrolet_Aveo_UVA.jpg,1586557264_download3.jpg,1586557264_download4.jpg', 'India', 'Uttarakhand', 'Dehradun', 'MIRZA RAVISH BEG', '09582090912', 0, 1, '2020-04-10 22:21:04'),
+(12, '4', '6', 'Tata 407', 'Commercial truck', '', '500000', '1586557410_viewimage.jpg', 'India', 'Uttarakhand', 'Dehradun', 'MIRZA RAVISH BEG', '09582090912', 0, 1, '2020-04-10 22:23:30');
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,15 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `category_slug`, `category_image`, `created_at`, `updated_at`, `deleted_at`, `status`) VALUES
-(1, 'Accessories', 'ravish-beg', '1586454017-ALSIG.JPG', '2020-04-09 23:10:17', NULL, NULL, 1);
+(2, 'Properties', 'properties', '1586554197-logo.png', '2020-04-11 02:59:57', NULL, NULL, 1),
+(3, 'Cars', 'cars', '1586554210-logo.png', '2020-04-11 03:00:10', NULL, NULL, 1),
+(4, 'Furniture', 'furniture', '1586554229-logo.png', '2020-04-11 03:00:29', NULL, NULL, 1),
+(5, 'Jobs', 'jobs', '1586554245-logo.png', '2020-04-11 03:00:45', NULL, NULL, 1),
+(6, 'Electronics And Appliances', 'electronics-and-appliances', '1586554273-logo.png', '2020-04-11 03:01:13', NULL, NULL, 1),
+(7, 'Mobiles', 'mobiles', '1586554287-logo.png', '2020-04-11 03:01:27', NULL, NULL, 1),
+(8, 'Bikes', 'bikes', '1586554320-logo.png', '2020-04-11 03:02:00', NULL, NULL, 1),
+(9, 'Books, Sports And Hobbies', 'books-sports-hobbies', '1586554352-logo.png', '2020-04-11 03:02:32', NULL, NULL, 1),
+(10, 'Fashion & Beauty', 'fashion-and-beauty', '1586554377-logo.png', '2020-04-11 03:02:57', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +107,7 @@ CREATE TABLE `chat_head` (
 --
 
 INSERT INTO `chat_head` (`chat_id`, `user_id`, `seller_id`, `product_id`, `chat_timestamp`) VALUES
-(5, '2', '1', '1', '2020-04-10 15:32:40');
+(6, '4', '3', '10', '2020-04-10 22:24:54');
 
 -- --------------------------------------------------------
 
@@ -48349,6 +48359,25 @@ INSERT INTO `countries` (`country_id`, `sortname`, `name`, `phonecode`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `favourites`
+--
+
+CREATE TABLE `favourites` (
+  `fav_id` int(11) NOT NULL,
+  `ads_id` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `favourites`
+--
+
+INSERT INTO `favourites` (`fav_id`, `ads_id`, `user_id`) VALUES
+(5, '11', '3');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `messages`
 --
 
@@ -48368,12 +48397,8 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`msg_id`, `chat_id`, `from_msg`, `to_msg`, `message`, `msg_type`, `read_status`, `msg_time`) VALUES
-(3, '4', '1', '2', 'Hey , I have an enquiry about this product', 0, 0, '2020-04-10 11:42:23'),
-(4, '4', '2', '1', 'yoyoyoy', 0, 0, '2020-04-10 11:45:35'),
-(5, '4', '1', '2', 'hey', 0, 0, '2020-04-10 12:14:50'),
-(6, '4', '1', '2', 'wassup', 0, 0, '2020-04-10 12:15:29'),
-(7, '4', '2', '1', 'hello', 0, 0, '2020-04-10 13:09:02'),
-(8, '5', '2', '1', 'Hey , I have an enquiry about this product', 0, 0, '2020-04-10 15:32:40');
+(9, '6', '4', '3', 'Hey , I have an enquiry about this product', 0, 0, '2020-04-10 22:24:54'),
+(10, '6', '4', '3', 'whats the price of property?', 0, 0, '2020-04-10 22:25:12');
 
 -- --------------------------------------------------------
 
@@ -52568,7 +52593,37 @@ CREATE TABLE `sub_categories` (
 --
 
 INSERT INTO `sub_categories` (`sub_id`, `cat_id`, `sub_name`, `category_slug`, `timestamp`) VALUES
-(1, '1', 'ggg', 'ggg', '2020-04-09 17:52:46');
+(2, '2', 'For Sale : Houses And Apartments', 'for-sale-houses-and-apartments', '2020-04-10 21:33:40'),
+(3, '2', 'For Rent : Houses & Apartments', 'for-rent-houses-and-apartments', '2020-04-10 22:10:20'),
+(4, '2', 'Lands & Plots', 'lands-and-plots', '2020-04-10 22:10:41'),
+(5, '3', 'cars', 'cars', '2020-04-10 22:10:55'),
+(6, '3', 'Commercial Vehicles', 'commercial-vehicles', '2020-04-10 22:11:11'),
+(7, '3', 'Spare Parts', 'spare-parts', '2020-04-10 22:11:27'),
+(8, '3', 'Other Vehicles', 'other-vehicles', '2020-04-10 22:11:43'),
+(9, '4', 'Sofa & DIning', 'sofa-and-dining', '2020-04-10 22:11:59'),
+(10, '4', 'Beds And Wardrobes', 'beds-and-wardrobes', '2020-04-10 22:12:17'),
+(11, '5', 'Data Entry & Back Office', 'data-entry-and-back-office', '2020-04-10 22:12:39'),
+(12, '5', 'Sales & Marketing', 'sales-and-marketing', '2020-04-10 22:12:53'),
+(13, '5', 'BPO & Telecaller', 'bpo-and-telecaller', '2020-04-10 22:13:10'),
+(14, '5', 'Driver', 'driver', '2020-04-10 22:13:18'),
+(15, '5', 'Office Assistant', 'office-assistant', '2020-04-10 22:13:35'),
+(16, '6', 'TVs , Videos & Audios', 'tvs-videos-and-audios', '2020-04-10 22:14:03'),
+(17, '6', 'Kitchen & Other Appliances', 'kitchen-and-other-appliances', '2020-04-10 22:14:22'),
+(18, '6', 'Computers & Laptops', 'computers-and-laptops', '2020-04-10 22:14:47'),
+(19, '6', 'Cameras & Lenses', 'cameras-and-lenses', '2020-04-10 22:15:01'),
+(20, '7', 'Mobile Phones', 'mobile-phones', '2020-04-10 22:15:14'),
+(21, '7', 'Accessories', 'accessories', '2020-04-10 22:15:24'),
+(22, '7', 'Tablets', 'tablets', '2020-04-10 22:15:34'),
+(23, '8', 'Motorcycles', 'motorcycles', '2020-04-10 22:15:52'),
+(24, '8', 'Scooters', 'scooters', '2020-04-10 22:16:02'),
+(25, '8', 'Spare Parts', 'bike-spare-parts', '2020-04-10 22:16:32'),
+(26, '8', 'Bicycles', 'bicycles', '2020-04-10 22:16:47'),
+(27, '9', 'Books', 'books', '2020-04-10 22:16:59'),
+(28, '9', 'Gym & Fitness', 'gym-and-fitness', '2020-04-10 22:17:13'),
+(29, '9', 'Musical Instruments', 'musical-instruments', '2020-04-10 22:17:36'),
+(30, '10', 'Men', 'men', '2020-04-10 22:17:48'),
+(31, '10', 'Women', 'women', '2020-04-10 22:17:54'),
+(32, '10', 'Kids', 'kids', '2020-04-10 22:17:59');
 
 -- --------------------------------------------------------
 
@@ -52592,8 +52647,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `nickname`, `user_email`, `user_password`, `user_mobile`, `user_desc`, `user_image`, `timestamp`) VALUES
-(1, 'ravish', 'ravish3474@outlook.com', '123', '', '', 'user.png', '2020-04-09 17:52:18'),
-(2, 'ravishBeg', 'ravish3474@gmail.com', '1234', '9582090912', 'hello', '1586534059-ALSIG.JPG', '2020-04-09 21:43:24');
+(3, 'Ravish', 'ravish3474@outlook.com', '123', '', '', '1586556565-download.jpg', '2020-04-10 21:34:01'),
+(4, 'Ravish Beg', 'ravish3474@gmail.com', '123', '', '', 'user.png', '2020-04-10 22:18:46');
 
 --
 -- Indexes for dumped tables
@@ -52628,6 +52683,12 @@ ALTER TABLE `cities`
 --
 ALTER TABLE `countries`
   ADD PRIMARY KEY (`country_id`);
+
+--
+-- Indexes for table `favourites`
+--
+ALTER TABLE `favourites`
+  ADD PRIMARY KEY (`fav_id`);
 
 --
 -- Indexes for table `messages`
@@ -52673,17 +52734,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `active_ads`
 --
 ALTER TABLE `active_ads`
-  MODIFY `ads_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ads_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `chat_head`
 --
 ALTER TABLE `chat_head`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `cities`
 --
@@ -52695,10 +52756,15 @@ ALTER TABLE `cities`
 ALTER TABLE `countries`
   MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 --
+-- AUTO_INCREMENT for table `favourites`
+--
+ALTER TABLE `favourites`
+  MODIFY `fav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `products`
 --
@@ -52718,12 +52784,12 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
-  MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

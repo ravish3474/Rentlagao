@@ -15,6 +15,28 @@ class UserModel extends CI_Model{
 	    }
 	}
 
+	public function add_fav($adv_id,$my_id){
+		$table="favourites";
+		$data=array('ads_id'=>$adv_id,
+					'user_id'=>$my_id);
+		$this->db->select('*');
+		$this->db->from('favourites');
+		$this->db->where('user_id',$my_id);
+	    $query = $this->db->get();
+	    if ( $query->num_rows() > 0 )
+	    {
+	    	return false;
+	    }
+	    else{
+          	if($this->db->insert($table, $data)){
+	          	return true;
+          	}
+          	else{
+	          	return false;
+          	}
+	    }
+	}
+
 	public function password_changer($my_id,$old_pass,$new_pass){
 		$this->db->select('*');
 		$this->db->from('users');
@@ -32,8 +54,29 @@ class UserModel extends CI_Model{
 	    }
 	}
 
+	public function search_ads($city,$seach_name){
+		$sql="SELECT * FROM active_ads WHERE city='$city' AND product_name LIKE '%$seach_name%'";
+		$query = $this->db->query($sql);
+		$result = $query->result_array();
+		return $result;
+	}
+
+	public function delete_fav($adv_id,$user_id){
+		$this->db->where('ads_id', $adv_id);
+		$this->db->where('user_id', $user_id);
+		$this->db->delete('favourites');
+		return true;
+	}
+
 	public function fetch_chat_users($my_id){
 		$sql="SELECT * FROM chat_head WHERE user_id='$my_id' OR seller_id='$my_id'";
+		$query = $this->db->query($sql);
+		$result = $query->result_array();
+		return $result;
+	}
+
+	public function fetchfavs($user_id){
+		$sql="SELECT * FROM favourites JOIN active_ads ON favourites.ads_id=active_ads.ads_id WHERE favourites.user_id='$user_id'";
 		$query = $this->db->query($sql);
 		$result = $query->result_array();
 		return $result;

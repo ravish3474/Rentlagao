@@ -1,4 +1,3 @@
-
 <style>
 	.pv_tad{
 		    display: flex;
@@ -60,14 +59,13 @@
 	</ul>
 </div> -->
 <section class="container my-4">
-	<h2><?=$location?> Free classifieds</h2>
+	<h2><?=$city?> Free classifieds</h2>
 	<div class="row mt-2">
 <!-- 		<div class="col-md-3">
 			<div class="p-1">
 				<h5 class="my-4 trdx border-bottom">Filter</h5>
 
 <div class="panel-group" id="accordion">
-
     <div class="panel panel-default py-2 border-bottom">
         <div class="panel-heading">
              <span class="panel-title" data-toggle="collapse" data-target="#collapseOne">
@@ -89,7 +87,6 @@
             </div>
         </div>
     </div>
-    
 
     <div class="panel panel-default py-2 border-bottom">
         <div class="panel-heading">
@@ -112,7 +109,6 @@
             </div>
         </div>
     </div>
-    
 
     <div class="panel panel-default py-2 border-bottom">
         <div class="panel-heading">
@@ -137,7 +133,7 @@
 		<div class="col-md-12">
 			<div class="p-1 border-bottom">
 				<div class="pv_tad">
-					<span class="m-0"><?php echo count($products);?> ads in <strong><?=$location?></strong></span>
+					<span class="m-0"><?php echo count($search_results);?> ads in <strong><?=$city?> For <?=$search_name?></strong></span>
 <!-- 					<div class="d-flex tab_ls"><strong>VIEW </strong>
 						<span class="cng_vw" id="list_vw"><i class="fas fa-list"></i></span>
 						<span class="cng_vw" id="grid_vw"><i class="fas fa-th-large"></i></span>
@@ -151,29 +147,29 @@
 			</div>
 			<div class="row">
                 <?php
-                foreach ($products as $prd) {
-                $picture=explode(",",$prd['photos']);
-                $pic=$picture[0];
+                foreach ($search_results as $advert) {
+                    $pictures=$advert['photos'];
+                    $exploder=explode(",",$pictures);
+                    $imager=$exploder[0];
                 ?>
-			  <div class="col-md-4 mt-4 px-2">
-                    <div class="pr_shw">
+                <div class="inner px-2"> <div class="pr_shw">
                             <div class="">
                                 <div class="">
                                     <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
-                                    <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$prd['ads_id']?>"></i></span></div>
+                                    <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$advert['ads_id']?>"></i></span></div>
                                 </div>
-                                <a href="<?=base_url()?>classifieds/<?=$prd['ads_id']?>">
-                                    <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="img-fluid" alt="">
-                                </a>
+                                <a href="<?=base_url()?>classifieds/<?=$advert['ads_id']?>">
+                                <img src="<?=base_url()?>uploads/ads_images/<?=$imager?>" class="img-fluid" alt="">
+                            </a>
                             </div>
-                            <a href="<?=base_url()?>classifieds/<?=$prd['ads_id']?>">
+                            <a href="<?=base_url()?>classifieds/<?=$advert['ads_id']?>">
                             <div class="product_val">
-                                <h5>&#8377; <?=$prd['price']?></h5>
+                                <h5>&#8377; <?=$advert['price']?></h5>
                                 <!-- <p>2013 - 45,000 Km</p> -->
-                                <span><?=$prd['product_name']?></span>
+                                <span><?=$advert['product_name']?></span>
                                 <div class="_taddt">
-                                    <span><?=$prd['city']?></span>
-                                    <span class=""><?php echo time_elapsed_string($prd['post_time']);?></span>
+                                    <span><?=$advert['city']?></span>
+                                    <!-- <span class=""> JAN 27</span> -->
                                 </div>
                             </div>
                         </a>
@@ -193,33 +189,3 @@
     });
 });
 </script>
-<?php
-    function time_elapsed_string($datetime, $full = false) {
-    $now = new DateTime;
-    $ago = new DateTime($datetime);
-    $diff = $now->diff($ago);
-
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
-
-    $string = array(
-        'y' => 'year',
-        'm' => 'month',
-        'w' => 'week',
-        'd' => 'day',
-        'h' => 'hour',
-        'i' => 'minute',
-        's' => 'second',
-    );
-    foreach ($string as $k => &$v) {
-        if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-        } else {
-            unset($string[$k]);
-        }
-    }
-
-    if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' ago' : 'just now';
-}
-?>

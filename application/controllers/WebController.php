@@ -29,6 +29,19 @@ class WebController extends MY_Controller {
         }
     }
 
+    public function add_fav(){
+        $adv_id=$_POST['adv_id'];
+        $userdata=$this->session->userdata('userdata');
+        $my_id=$userdata[0]['user_id'];
+        $fav=$this->Usermodel->add_fav($adv_id,$my_id);
+        if ($fav) {
+            die(json_encode(array('status'=>'1','msg'=>'Added To Favourites')));
+        }
+        else{
+            die(json_encode(array('status'=>'0','msg'=>'Already In Your Favourites')));
+        }
+    }
+
     public function change_password(){
         $rand_city=$this->Usermodel->fetch_city_rand();
         $random=$rand_city[0]['city'];
@@ -268,6 +281,37 @@ class WebController extends MY_Controller {
         $this->load->view('website/footer');
     }
 
+    public function search_results(){
+        $city=$_POST['city_name'];
+        $search_name=$_POST['search_name'];
+        $data['search_results']=$this->Usermodel->search_ads($city,$search_name);
+        $rand_city=$this->Usermodel->fetch_city_rand();
+        $random=$rand_city[0]['city'];
+        if($this->session->userdata('location_user')){
+            $location=$this->session->userdata('location_user');
+            $random=$location;
+        }
+        $data['city']=$city;
+        $data['search_name']=$search_name;
+        $data['location']=$random;
+        $this->load->view('website/header',$data);
+        $this->load->view('website/searcher',$data);
+        $this->load->view('website/footer');
+    }
+
+    public function delete_fav(){
+        $adv_id=$_POST['adv_id'];
+        $userdata=$this->session->userdata('userdata');
+        $user_id=$userdata[0]['user_id'];
+        $result=$this->Usermodel->delete_fav($adv_id,$user_id);
+        if ($result) {
+            die(json_encode(array('status'=>'1','msg'=>'Removed Successfully')));
+        }
+        else{
+            die(json_encode(array('status'=>'0','msg'=>'Failed')));
+        }
+    }
+
     public function my_ads(){
         $rand_city=$this->Usermodel->fetch_city_rand();
         $random=$rand_city[0]['city'];
@@ -280,6 +324,7 @@ class WebController extends MY_Controller {
             $userdata=$this->session->userdata('userdata');
             $user_id=$userdata[0]['user_id'];
             $data['myads']=$this->Usermodel->fetchmyads($user_id);
+            $data['myfavs']=$this->Usermodel->fetchfavs($user_id);
             $this->load->view('website/header',$data);
             $this->load->view('website/myfav',$data);
             $this->load->view('website/footer');

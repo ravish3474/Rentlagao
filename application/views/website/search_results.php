@@ -155,22 +155,22 @@
                 $picture=explode(",",$prd['photos']);
                 $pic=$picture[0];
                 ?>
-			  <div class="col-md-4 mt-4 px-2">
+			  <div class="col-md-3 col-md-6 col-lg-3  mt-4 px-2">
                     <div class="pr_shw">
                             <div class="">
-                                <div class="">
+                                <div class="ab_filt">
                                     <div class="float-left bg-warning px-1"><span class="feaT__">Featured</span></div>
                                     <div class="float-right"><span><i class="far fa-heart favourite" adv_id="<?=$prd['ads_id']?>"></i></span></div>
                                 </div>
                                 <a href="<?=base_url()?>classifieds/<?=$prd['ads_id']?>">
-                                    <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="img-fluid" alt="">
+                                    <img src="<?=base_url()?>uploads/ads_images/<?=$pic?>" class="prd_hw" alt="">
                                 </a>
                             </div>
                             <a href="<?=base_url()?>classifieds/<?=$prd['ads_id']?>">
                             <div class="product_val">
-                                <h5>&#8377; <?=$prd['price']?></h5>
+                                <h5 class="m-0">&#8377; <?=$prd['price']?></h5>
                                 <!-- <p>2013 - 45,000 Km</p> -->
-                                <span><?=$prd['product_name']?></span>
+                                <small><?=$prd['product_name']?></small>
                                 <div class="_taddt">
                                     <span><?=$prd['city']?></span>
                                     <span class=""><?php echo time_elapsed_string($prd['post_time']);?></span>
